@@ -1,0 +1,8 @@
+\\Mac\Home\Documents\IT-manager\IT-manager\bin\Debug\IT_manager.exe.config
+\\Mac\Home\Documents\IT-manager\IT-manager\obj\Debug\IT_manager.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\IT-manager\IT-manager\obj\Debug\IT_manager.Properties.Resources.resources
+\\Mac\Home\Documents\IT-manager\IT-manager\obj\Debug\IT_manager.csproj.GenerateResource.Cache
+\\Mac\Home\Documents\IT-manager\IT-manager\bin\Debug\IT_manager.exe
+\\Mac\Home\Documents\IT-manager\IT-manager\bin\Debug\IT_manager.pdb
+\\Mac\Home\Documents\IT-manager\IT-manager\obj\Debug\IT_manager.exe
+\\Mac\Home\Documents\IT-manager\IT-manager\obj\Debug\IT_manager.pdb
