@@ -8,13 +8,13 @@ namespace IT_manager
 {
     public class Test
     {
+        public string Name { get; set; }
+        public bool IsImportatnt { get; set; }
+
         public Test(string name, bool isImportant = true)
         {
             Name = name;
             IsImportatnt = isImportant; 
         }
-
-        public string Name { get; set; }
-        public bool IsImportatnt { get; set; }
     }
 }

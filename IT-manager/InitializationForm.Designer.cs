@@ -90,7 +90,7 @@
             this.Tester,
             this.Salary});
             this.dgvEmployees.Location = new System.Drawing.Point(12, 62);
-            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(6);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.RowHeadersVisible = false;
@@ -148,7 +148,7 @@
             this.Analyst2,
             this.Salary2});
             this.dgvSendingEmployees.Location = new System.Drawing.Point(760, 62);
-            this.dgvSendingEmployees.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvSendingEmployees.Margin = new System.Windows.Forms.Padding(6);
             this.dgvSendingEmployees.Name = "dgvSendingEmployees";
             this.dgvSendingEmployees.ReadOnly = true;
             this.dgvSendingEmployees.RowHeadersVisible = false;
@@ -182,7 +182,7 @@
             // 
             this.btnSendEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSendEmployee.Location = new System.Drawing.Point(704, 133);
-            this.btnSendEmployee.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSendEmployee.Margin = new System.Windows.Forms.Padding(6);
             this.btnSendEmployee.Name = "btnSendEmployee";
             this.btnSendEmployee.Size = new System.Drawing.Size(44, 69);
             this.btnSendEmployee.TabIndex = 3;
@@ -194,7 +194,7 @@
             // 
             this.btnReturnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnReturnEmployee.Location = new System.Drawing.Point(704, 227);
-            this.btnReturnEmployee.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnReturnEmployee.Margin = new System.Windows.Forms.Padding(6);
             this.btnReturnEmployee.Name = "btnReturnEmployee";
             this.btnReturnEmployee.Size = new System.Drawing.Size(44, 69);
             this.btnReturnEmployee.TabIndex = 3;
@@ -205,7 +205,7 @@
             // btnSend
             // 
             this.btnSend.Location = new System.Drawing.Point(964, 362);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(6);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(146, 44);
             this.btnSend.TabIndex = 4;
@@ -227,9 +227,9 @@
             this.gbAnalysisPhase.Controls.Add(this.btnReturnEmployee);
             this.gbAnalysisPhase.Controls.Add(this.btnSendEmployee);
             this.gbAnalysisPhase.Location = new System.Drawing.Point(24, 23);
-            this.gbAnalysisPhase.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbAnalysisPhase.Margin = new System.Windows.Forms.Padding(6);
             this.gbAnalysisPhase.Name = "gbAnalysisPhase";
-            this.gbAnalysisPhase.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbAnalysisPhase.Padding = new System.Windows.Forms.Padding(6);
             this.gbAnalysisPhase.Size = new System.Drawing.Size(1120, 427);
             this.gbAnalysisPhase.TabIndex = 5;
             this.gbAnalysisPhase.TabStop = false;
@@ -249,11 +249,8 @@
             // 
             this.cmbStakeholders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStakeholders.FormattingEnabled = true;
-            this.cmbStakeholders.Items.AddRange(new object[] {
-            "Заказчик",
-            "Пользователь"});
             this.cmbStakeholders.Location = new System.Drawing.Point(760, 363);
-            this.cmbStakeholders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbStakeholders.Margin = new System.Windows.Forms.Padding(4);
             this.cmbStakeholders.Name = "cmbStakeholders";
             this.cmbStakeholders.Size = new System.Drawing.Size(196, 33);
             this.cmbStakeholders.TabIndex = 7;
@@ -261,7 +258,7 @@
             // btnLabourExchange
             // 
             this.btnLabourExchange.Location = new System.Drawing.Point(148, 362);
-            this.btnLabourExchange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLabourExchange.Margin = new System.Windows.Forms.Padding(4);
             this.btnLabourExchange.Name = "btnLabourExchange";
             this.btnLabourExchange.Size = new System.Drawing.Size(268, 44);
             this.btnLabourExchange.TabIndex = 6;
@@ -285,9 +282,9 @@
             this.gpDeploymentPhase.Controls.Add(this.treeView);
             this.gpDeploymentPhase.Controls.Add(this.label1);
             this.gpDeploymentPhase.Location = new System.Drawing.Point(24, 462);
-            this.gpDeploymentPhase.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gpDeploymentPhase.Margin = new System.Windows.Forms.Padding(6);
             this.gpDeploymentPhase.Name = "gpDeploymentPhase";
-            this.gpDeploymentPhase.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gpDeploymentPhase.Padding = new System.Windows.Forms.Padding(6);
             this.gpDeploymentPhase.Size = new System.Drawing.Size(1120, 404);
             this.gpDeploymentPhase.TabIndex = 6;
             this.gpDeploymentPhase.TabStop = false;
@@ -296,7 +293,7 @@
             // btnStartPlaning
             // 
             this.btnStartPlaning.Location = new System.Drawing.Point(0, 37);
-            this.btnStartPlaning.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnStartPlaning.Margin = new System.Windows.Forms.Padding(6);
             this.btnStartPlaning.Name = "btnStartPlaning";
             this.btnStartPlaning.Size = new System.Drawing.Size(372, 44);
             this.btnStartPlaning.TabIndex = 4;
@@ -307,7 +304,7 @@
             // treeView
             // 
             this.treeView.Location = new System.Drawing.Point(382, 58);
-            this.treeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeView.Margin = new System.Windows.Forms.Padding(4);
             this.treeView.Name = "treeView";
             this.treeView.ShowPlusMinus = false;
             this.treeView.Size = new System.Drawing.Size(718, 333);
@@ -331,7 +328,7 @@
             this.ClientSize = new System.Drawing.Size(1138, 825);
             this.Controls.Add(this.gpDeploymentPhase);
             this.Controls.Add(this.gbAnalysisPhase);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximumSize = new System.Drawing.Size(1164, 896);
             this.MinimumSize = new System.Drawing.Size(1164, 896);
             this.Name = "InitializationForm";
