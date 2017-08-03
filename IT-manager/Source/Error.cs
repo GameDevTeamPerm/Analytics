@@ -8,6 +8,9 @@ namespace IT_manager
 {
     public class Error
     {
+        static Random random = new Random();
+        public ErrorType Type { get; set; }
+
         public enum ErrorType
         {
             None,
@@ -30,7 +33,12 @@ namespace IT_manager
             Type = ErrorType.None;
         }
 
-        public void SetRandomErrorType()
+        public Error(ErrorType errType)
+        {
+            Type = errType;
+        }
+
+        public void SetErrorType()
         {
             Type = (ErrorType)random.Next(1, (int)ErrorType.Count);
         }
@@ -39,8 +47,5 @@ namespace IT_manager
         {
             return Type.ToString();
         }
-
-        static Random random = new Random();
-        public ErrorType Type { get; set; }
     }
 }

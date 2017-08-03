@@ -13,12 +13,12 @@ namespace IT_manager
     public partial class DeploymentForm : Form
     {
         public bool nextStage = false;
-        public Project project;
+        public ItManager itManager;
 
-        public DeploymentForm(Project project)
+        public DeploymentForm(ItManager _itManager)
         {
             InitializeComponent();
-            this.project = project;
+            itManager = _itManager;
             cbSelectStakeholder.SelectedIndex = 0;
         }
 
@@ -32,22 +32,7 @@ namespace IT_manager
 
         private void btnShowReport_Click(object sender, EventArgs e)
         {
-            List<Report> reports = new List<Report>();
-            /* Добавляем в модули случайные ошибки, пока их количество не станет равно 
-            количеству ошибок допущенных после планирования, разработки и стабилизации*/
-            foreach (Job job in project.Jobs)
-            {
-                for (int i = 0; i < job.ErrorsCount; i++)
-                {
-                    Error error = new Error();
-                    error.SetRandomErrorType();
-                    job.Module.Errors.Add(error);
-                    Report report = new Report(job.Module, error);
-                    reports.Add(report);
-                }
-            }
-
-            dgvReportErrors.DataSource = reports;
+            itManager.ShowReport();
         }
     }
 }

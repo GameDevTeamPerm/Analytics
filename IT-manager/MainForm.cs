@@ -12,7 +12,8 @@ namespace IT_manager
 {
     public partial class MainForm : Form
     {
-        Project project = new Project(2000, new List<Employee>(), new Content());
+        ItManager itManager = new ItManager();
+        Content content;
 
         public MainForm()
         {
@@ -21,8 +22,9 @@ namespace IT_manager
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            rtbDescription.Text = project.Content.ProjectDescription;
-            rtbTask.Text = project.Content.ProjectTask;
+            content = new Content();
+            rtbDescription.Text = content.ProjectDescription;
+            rtbTask.Text = content.ProjectTask;
         }
 
         private void btnStartGame_Click(object sender, EventArgs e)
@@ -31,36 +33,38 @@ namespace IT_manager
             bool closing = false;
             int currentStage = 0;
 
+            itManager.StartGame(content);
+
             do
             {
                 if (++currentStage > 4)
                 {
-                    project.IncrementIteration();
+                    itManager.NextIteration();
                     currentStage = 1;
                 }
 
                 switch (currentStage)
                 {
                     case 1:
-                        InitializationForm initForm = new InitializationForm(project);
+                        InitializationForm initForm = new InitializationForm(itManager);
                         initForm.ShowDialog();
                         closing = !initForm.nextStage;
                         break;
 
                     case 2:
-                        PlanningForm planForm = new PlanningForm(project);
+                        PlanningForm planForm = new PlanningForm(itManager);
                         planForm.ShowDialog();
                         closing = !planForm.nextStage;
                         break;
 
                     case 3:
-                        StabilizationForm stabForm = new StabilizationForm(project);
+                        StabilizationForm stabForm = new StabilizationForm(itManager);
                         stabForm.ShowDialog();
                         closing = !stabForm.nextStage;
                         break;
 
                     case 4:
-                        DeploymentForm deplForm = new DeploymentForm(project);
+                        DeploymentForm deplForm = new DeploymentForm(itManager);
                         deplForm.ShowDialog();
                         closing = !deplForm.nextStage;
                         break;

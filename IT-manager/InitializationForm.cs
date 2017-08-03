@@ -14,14 +14,14 @@ namespace IT_manager
     public partial class InitializationForm : Form
     {
         public bool nextStage = false;
-        public Project project;
+        public ItManager itManager;
 
-        public InitializationForm(Project project)
+        public InitializationForm(ItManager _itManager)
         {
             InitializeComponent();
+            itManager = _itManager;
+            cmbStakeholders.Items.AddRange(itManager.Stakeholders.ToArray());
             cmbStakeholders.SelectedIndex = 0;
-            this.project = project;
-
 
             // Чтобы присовить список элементу DataGridView, нужно задать свойства (а не поля) у элементов списка
             UpdateTableOfEmployees();
@@ -40,8 +40,8 @@ namespace IT_manager
             {
                 if (!namesOfSendingEmploees.Contains(row.Cells[0].Value.ToString()))
                 {
-                    Employee employee = project.Content.PossibleEmployees.Where(x => x.Name == row.Cells[0].Value.ToString()).First();
-                    project.AddEmployee(employee);
+                    Employee employee = itManager.Employees.Where(x => x.Name == row.Cells[0].Value.ToString()).First();
+                    itManager.HireEmployee(employee);
                     dgvSendingEmployees.Rows.Add(employee.Name, employee.AnalystSkill, employee.Salary);
                     namesOfSendingEmploees.Add(row.Cells[0].Value.ToString());
                 }
@@ -53,8 +53,8 @@ namespace IT_manager
             List<int> deletedIndexRow = new List<int>();
             foreach (DataGridViewRow row in dgvSendingEmployees.SelectedRows)
             {
-                Employee employee = project.Content.PossibleEmployees.Where(x => x.Name == row.Cells[0].Value.ToString()).First();
-                project.RemoveEmployee(employee);
+                Employee employee = itManager.Employees.Where(x => x.Name == row.Cells[0].Value.ToString()).First();
+                itManager.FireEmployee(employee);
                 deletedIndexRow.Add(row.Index);
             }
             deletedIndexRow.Reverse();
@@ -68,26 +68,16 @@ namespace IT_manager
         {
             if (dgvSendingEmployees.Rows.Count != 0)
             {
-                //Отсортировывает список сотрудников, сначала плохие затем хорошие
-                dgvSendingEmployees.Sort(dgvSendingEmployees.Columns[1], 0);
-
-                List<Employee> employees = new List<Employee>();
+                List<Employee> sendingEmployees = new List<Employee>();
                 foreach (DataGridViewRow row in dgvSendingEmployees.Rows)
                 {
-                    employees.Add(project.Content.PossibleEmployees.Where(x => x.Name == row.Cells[0].Value.ToString()).First());
+                    sendingEmployees.Add(itManager.Employees.Where(x => x.Name == row.Cells[0].Value.ToString()).First());
                 }
 
-                FindingRequirements(employees, project.Content.Requirements, cmbStakeholders.Text);
-                foreach (Employee emp in employees)
-                {
-                    emp.ClearCurrentCapacity();
-                }
-
-                project.IncrementDay();
+                itManager.SendToStakeholder(sendingEmployees, stakeholder: cmbStakeholders.Text);
 
                 UpdateTreeViewKnownRequirements();
-
-                labelDay.Text = "День: " + project.PassedDays;
+                labelDay.Text = "День: " + itManager.PassedDays;
             }
             else
             {
@@ -99,7 +89,7 @@ namespace IT_manager
         {
             treeView.Nodes.Clear();
 
-            List<TreeNode> tns = project.KnownRequirements;
+            List<TreeNode> tns = itManager.GetTreeNodeOfKnownRequirements;
 
             foreach (TreeNode tn in tns)
             {
@@ -109,45 +99,9 @@ namespace IT_manager
             treeView.ExpandAll();
         }
 
-        private void FindingRequirements(List<Employee> employees, List<Requirement> reqElems, string stakeholder)
-        {
-            foreach (Requirement elem in reqElems)
-            {
-                if (elem.IsFound || elem.StakeholderName == stakeholder)
-                {
-                    if (elem.IsFound)
-                    {
-                        FindingRequirements(employees, elem.SubRequirements, stakeholder);
-                    }
-                    else
-                    {
-                        foreach (Employee emp in employees)
-                        {
-                            //Если скилл сотрудника выше назначенного для обнаружения или ниже, но текущая итерация >= назначенной
-                            if (emp.CurrentAnalystCapacity < emp.AnalystCapacity &&
-                                (emp.AnalystSkill >= elem.MinimumSkill || project.Iteration >= elem.DetectionIterationNumber))
-                            {
-                                int necessarySkill = (new Random()).Next(100);
-
-                                if (necessarySkill <= emp.AnalystSkill)
-                                {
-                                    elem.IsFound = true;
-                                    elem.Employee = emp;
-                                    emp.CurrentAnalystCapacity++;
-
-                                    FindingRequirements(employees, elem.SubRequirements, stakeholder);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         private void btnLabourExchange_Click(object sender, EventArgs e)
         {
-            WorkersForm frmW = new WorkersForm(project.Content.PossibleEmployees);
+            WorkersForm frmW = new WorkersForm(itManager.Employees);
             Hide();
             frmW.ShowDialog();
             Show();
@@ -157,7 +111,7 @@ namespace IT_manager
         private void UpdateTableOfEmployees()
         {
             dgvEmployees.Rows.Clear();
-            foreach (Employee emp in project.Content.PossibleEmployees.Where(x => x.isHired).ToList())
+            foreach (Employee emp in itManager.HiredEmployees)
             {
                 dgvEmployees.Rows.Add(emp.Name,
                     emp.AnalystSkill + " (" + emp.AnalystCapacity + " в день)",
