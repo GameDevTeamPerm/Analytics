@@ -6,12 +6,3 @@
 \\Mac\Home\Documents\IT-manager\IT-manager\bin\Debug\IT_manager.pdb
 \\Mac\Home\Documents\IT-manager\IT-manager\obj\Debug\IT_manager.exe
 \\Mac\Home\Documents\IT-manager\IT-manager\obj\Debug\IT_manager.pdb
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\bin\Debug\IT_manager.exe.config
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\obj\Debug\IT_manager.exe
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\obj\Debug\IT_manager.pdb
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\bin\Debug\IT_manager.exe
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\bin\Debug\IT_manager.pdb
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\obj\Debug\IT_manager.csprojResolveAssemblyReference.cache
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\obj\Debug\IT_manager.Properties.Resources.resources
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\obj\Debug\IT_manager.csproj.GenerateResource.Cache
-C:\Users\Alex1\Source\Repos\IT-manager\IT-manager\obj\Debug\IT_manager.InitializationForm.resources

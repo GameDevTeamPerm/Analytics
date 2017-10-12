@@ -13,30 +13,31 @@ namespace IT_manager
     public partial class StabilizationForm : Form
     {
         public bool nextStage = false;
-        public ItManager itManager;
+        public Project project;
 
-        public StabilizationForm(ItManager _itManager)
+        public StabilizationForm(Project project)
         {
             InitializeComponent();
-            itManager = _itManager;
-            dgvListOfJobs.DataSource = itManager.Jobs;
-            dgvTests.DataSource = itManager.Tests;
+            this.project = project;
+            dgvListOfJobs.DataSource = project.Jobs;
+            dgvTests.DataSource = project.Tests;
         }
 
         private void btnJobsSelection_Click(object sender, EventArgs e)
         {
+
             List<Test> testsToJob = new List<Test>();
             for (int i = 0; i < dgvTests.SelectedRows.Count; i++)
             {
                 testsToJob.Add(dgvTests.SelectedRows[i].DataBoundItem as Test);
             }
 
-            Module job = dgvListOfJobs.SelectedRows[0].DataBoundItem as Module;
-
-            itManager.AssignTest(job, testsToJob);
+            Job job = dgvListOfJobs.SelectedRows[0].DataBoundItem as Job;
+            job.Tests.AddRange(testsToJob);
 
             dgvReport.DataSource = null;
             dgvReport.DataSource = testsToJob;
+
         }
 
         private void btnStabilization_Click(object sender, EventArgs e)
@@ -47,7 +48,15 @@ namespace IT_manager
 
         private void btnStartDeployment_Click(object sender, EventArgs e)
         {
-            itManager.ExecuteStabilization();
+            // Убрать случайное количество ошибок после стабилизации (в зависимотси от навыка тестера)
+            foreach (Job job in project.Jobs)
+            {
+                Random random = new Random();
+                const int minErrorCount = 10;
+                const int maxErrorCount = 30;
+                job.ErrorsCount -= random.Next((int)(minErrorCount * (job.Tester.TesterSkill / 100.0)),
+                    (int)(maxErrorCount * (job.Tester.TesterSkill / 100.0)));
+            }
 
             nextStage = true;
             Close();
